@@ -1,0 +1,11 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "算命助手",
+    "navigationBarBackgroundColor": "#121826",
+    "navigationBarTextStyle": "white",
+    "backgroundTextStyle": "light"
+  }
+}

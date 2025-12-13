@@ -1,0 +1,12 @@
+{
+  "miniprogramRoot": "./",
+  "projectname": "suanming",
+  "description": "多模型算命助手",
+  "appid": "",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true
+  },
+  "compileType": "miniprogram"
+}
