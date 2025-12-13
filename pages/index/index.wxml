@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="card">
+    <view class="title">AI 算命助手</view>
+    <view class="subtitle">选择模型，输入你的问题或八字信息</view>
+    <view class="tag">ChatGPT · Gemini · DeepSeek · 豆包</view>
+  </view>
+
+  <view class="card">
+    <view class="field-label">选择解析模型</view>
+    <view class="model-selector">
+      <block wx:for="{{models}}" wx:key="key">
+        <view class="model-option {{item.key === selectedModel ? 'active' : ''}}" bindtap="onSelectModel" data-key="{{item.key}}">
+          {{item.name}}
+          <text class="small-text">（{{item.provider}}）</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="field-label">求测内容</view>
+    <textarea class="input" placeholder="例如：1994年5月20日生，想问今年事业运势？" value="{{question}}" bindinput="onInput"/>
+    <switch checked="{{useMockResponse}}" bindchange="onToggleMock" />
+    <text class="small-text">使用演示模式（随机回复），关闭后会请求后端接口</text>
+    <button class="button-primary" bindtap="onSubmit" loading="{{loading}}" disabled="{{loading}}">开始解析</button>
+  </view>
+
+  <view class="card" wx:if="{{result}}">
+    <view class="field-label">解析结果</view>
+    <view class="result">{{result}}</view>
+  </view>
+</view>
