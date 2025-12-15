@@ -1,0 +1,199 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #0f1115;
+  --panel: #171b22;
+  --accent: #3fd1c2;
+  --accent-2: #ff7b5f;
+  --text: #d7e2f0;
+  --muted: #8fa4c4;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 20%, rgba(63, 209, 194, 0.05), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(255, 123, 95, 0.05), transparent 25%),
+    var(--bg);
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+}
+
+header.hud {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: rgba(15, 17, 21, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.stats {
+  display: flex;
+  gap: 12px;
+  font-weight: 600;
+}
+
+.controls {
+  text-align: right;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), #27b1a5);
+  color: var(--bg);
+  padding: 10px 16px;
+  font-weight: 700;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(63, 209, 194, 0.35);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button.ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  padding: 16px;
+  flex: 1;
+}
+
+#gameCanvas {
+  width: 100%;
+  height: calc(100vh - 120px);
+  background: radial-gradient(circle at 40% 40%, rgba(63, 209, 194, 0.07), transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(255, 123, 95, 0.07), transparent 35%),
+    #0b0d10;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+
+.panel {
+  background: var(--panel);
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow);
+  height: fit-content;
+}
+
+.panel h2 {
+  margin-top: 0;
+}
+
+.panel ul {
+  padding-left: 18px;
+  color: var(--muted);
+}
+
+.callout {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px dashed rgba(63, 209, 194, 0.35);
+  color: var(--accent);
+  background: rgba(63, 209, 194, 0.06);
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: grid;
+  place-items: center;
+  z-index: 5;
+  transition: opacity 200ms ease;
+}
+
+.overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dialog {
+  background: var(--panel);
+  padding: 28px;
+  border-radius: 16px;
+  width: min(420px, 90vw);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.dialog h1 {
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  header.hud {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "brand"
+      "stats"
+      "controls"
+      "btn";
+    text-align: center;
+  }
+
+  .brand {
+    grid-area: brand;
+  }
+
+  .stats {
+    grid-area: stats;
+    justify-content: center;
+  }
+
+  .controls {
+    grid-area: controls;
+    text-align: center;
+  }
+
+  header button {
+    grid-area: btn;
+    justify-self: center;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  #gameCanvas {
+    height: 60vh;
+  }
+}
