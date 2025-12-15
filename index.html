@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>街机射击场</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hud">
+    <div class="brand">街机射击场</div>
+    <div class="stats">
+      <span id="score">得分：0</span>
+      <span id="health">生命：100%</span>
+    </div>
+    <div class="controls">WASD / 方向键移动 · 鼠标或空格射击</div>
+    <button id="resetBtn" class="ghost">重新开始</button>
+  </header>
+
+  <main>
+    <canvas id="gameCanvas" aria-label="街机射击游戏画布"></canvas>
+    <section class="panel">
+      <h2>玩法说明</h2>
+      <ul>
+        <li>使用 <strong>WASD</strong> 或 <strong>方向键</strong> 移动。</li>
+        <li>按下 <strong>空格</strong> 或 <strong>鼠标左键</strong> 射击。</li>
+        <li>消灭敌人可获得分数，敌人碰到你会掉血。</li>
+        <li>生命归零即为游戏结束，点击“重新开始”继续挑战。</li>
+      </ul>
+      <div class="callout">坚持得越久，敌人越多，移动越快！</div>
+    </section>
+  </main>
+
+  <div id="overlay" class="overlay hidden">
+    <div class="dialog">
+      <h1>准备战斗！</h1>
+      <p>移动躲避，瞄准射击，看看你能坚持多久。</p>
+      <button id="startBtn">开始游戏</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
